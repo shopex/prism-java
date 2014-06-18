@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure//EN" "http://www.eclipse.org/jetty/configure.dtd">
+
+
+<Configure id="Server" class="org.eclipse.jetty.server.Server">
+
+	<!-- =========================================================== -->
+	<!-- Server Thread Pool -->
+	<!-- =========================================================== -->
+	<Set name="ThreadPool">
+		<New class="org.eclipse.jetty.util.thread.QueuedThreadPool">
+			<Set name="minThreads">200</Set>
+			<Set name="maxThreads">200</Set>
+			<Set name="detailedDump">false</Set>
+		</New>
+	</Set>
+
+	<!-- =========================================================== -->
+	<!-- Set connectors -->
+	<!-- =========================================================== -->
+	<!-- One of each type! -->
+	<!-- =========================================================== -->
+
+	<!-- Use this connector for many frequently idle connections and for threadless 
+		continuations. -->
+	<Call name="addConnector">
+		<Arg>
+			<New class="org.eclipse.jetty.server.nio.SelectChannelConnector">
+				<Set name="port">
+					<SystemProperty name="jetty.port" default="8002" />
+				</Set>
+				<Set name="maxIdleTime">30000</Set>
+				<Set name="Acceptors">2</Set>
+			</New>
+		</Arg>
+	</Call>
+
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<!-- SSL Listener with test keystore listening on port 8443 -->
+	<!-- Configured to exclude weak SSL Ciphers -->
+	<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+	<!-- SSL Keystore generated with the following command: $ keytool -keystore 
+		keystore.ks -alias jetty -genkey -keyalg RSA -validity 5000 -keysize 1024 -->
+
+	<!-- <Call name="addConnector"> <Arg> <New class="org.eclipse.jetty.server.ssl.SslSocketConnector"> 
+		<Set name="Port">@sweb.port@</Set> <Set name="maxIdleTime">30000</Set> <Set 
+		name="keystore"><SystemProperty name="jetty.home" default="." />/lib/keystore.ks</Set> 
+		<Set name="password">jposjposjposjpos</Set> <Set name="keyPassword">jposjposjposjpos</Set> 
+		<Set name="ExcludeCipherSuites"> <Array type="java.lang.String"> <Item>SSL_DHE_RSA_WITH_DES_CBC_SHA</Item> 
+		<Item>SSL_DHE_DSS_WITH_DES_CBC_SHA</Item> <Item>SSL_RSA_EXPORT_WITH_RC4_40_MD5</Item> 
+		<Item>SSL_RSA_EXPORT_WITH_DES40_CBC_SHA</Item> <Item>SSL_RSA_WITH_DES_CBC_SHA</Item> 
+		<Item>SSL_DHE_RSA_EXPORT_WITH_DES40_CBC_SHA</Item> <Item>SSL_DHE_DSS_EXPORT_WITH_DES40_CBC_SHA</Item> 
+		</Array> </Set> </New> </Arg> </Call> -->
+	<!-- =========================================================== -->
+	<!-- Set handler Collection Structure -->
+	<!-- =========================================================== -->
+	<Set name="handler">
+		<New id="Handlers" class="org.eclipse.jetty.server.handler.HandlerCollection">
+			<Set name="handlers">
+				<Array type="org.eclipse.jetty.server.Handler">
+					<Item>
+						<New id="Contexts"
+							class="org.eclipse.jetty.server.handler.ContextHandlerCollection" />
+					</Item>
+					<Item>
+						<New id="DefaultHandler" class="org.eclipse.jetty.server.handler.DefaultHandler" />
+					</Item>
+					<Item>
+						<New id="RequestLog" class="org.eclipse.jetty.server.handler.RequestLogHandler" />
+					</Item>
+				</Array>
+			</Set>
+		</New>
+	</Set>
+	<Set name="handler">
+		<New id="Handlers" class="org.eclipse.jetty.server.handler.HandlerCollection">
+			<Set name="handlers">
+				<Array type="org.eclipse.jetty.server.Handler">
+					<Item>
+						<New class="org.eclipse.jetty.webapp.WebAppContext">
+							<Set name="contextPath">/</Set>
+							<Set name="resourceBase">webapp
+							</Set>
+							<Call name="addServlet">
+								<Arg>org.eclipse.jetty.servlet.DefaultServlet</Arg>
+								<Arg>/</Arg>
+							</Call>
+						</New>
+					</Item>
+				</Array>
+			</Set>
+		</New>
+	</Set>
+	<!-- =========================================================== -->
+	<!-- extra options -->
+	<!-- =========================================================== -->
+	<Set name="stopAtShutdown">true</Set>
+	<!-- ensure/prevent Server: header being sent to browsers -->
+	<Set name="sendServerVersion">true</Set>
+	<Set name="dumpAfterStart">false</Set>
+	<Set name="dumpBeforeStop">false</Set>
+</Configure>

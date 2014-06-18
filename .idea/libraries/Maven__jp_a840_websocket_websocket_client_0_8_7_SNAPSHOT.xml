@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Maven: jp.a840.websocket:websocket-client:0.8.7-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/jp/a840/websocket/websocket-client/0.8.7-SNAPSHOT/websocket-client-0.8.7-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/jp/a840/websocket/websocket-client/0.8.7-SNAPSHOT/websocket-client-0.8.7-SNAPSHOT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/jp/a840/websocket/websocket-client/0.8.7-SNAPSHOT/websocket-client-0.8.7-SNAPSHOT-sources.jar!/" />
+      <root url="file://$PROJECT_DIR$/../websocket-client/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../websocket-client/src/test/java" />
+    </SOURCES>
+  </library>
+</component>
