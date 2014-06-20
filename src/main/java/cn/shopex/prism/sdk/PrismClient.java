@@ -292,7 +292,7 @@ public class PrismClient {
   }
 
   /**
-   * 检查访问令牌
+   * 检查用户登录信息
    */
   private boolean checkSessionId(String prismSessionId){
     Map<String,String> appParams = new HashMap<String,String>();
@@ -330,7 +330,6 @@ public class PrismClient {
       if (!SignTools.isBlank(token)) {
         request.getSession().setAttribute("session_id",sessionId);//将token放入session
       }
-      refreshToken();
     } catch (IOException e) {
       e.printStackTrace();
     }

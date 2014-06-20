@@ -59,7 +59,6 @@ public class PrismClientTest {
       public void onOpen(WebSocket socket) {
         System.out.println("---> open");
       }
-
       @Override
       public void onMessage(WebSocket socket, PrismMsg prismMsg) {
         System.out.println("---> receive msg:"+prismMsg);
@@ -72,13 +71,11 @@ public class PrismClientTest {
           }
         }
       }
-
       @Override
       public void onError(WebSocket socket, WebSocketException e) {
         e.printStackTrace();
         System.out.println("---> error:"+e);
       }
-
       @Override
       public void onClose(WebSocket socket) {
         System.out.println("---> close");
