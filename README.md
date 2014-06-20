@@ -39,9 +39,9 @@ mvn clean install
 
 ```xml
 <dependency>
-  <groupId>jp.a840.websocket</groupId>
-  <artifactId>websocket-client</artifactId>
-  <version>0.8.7-SNAPSHOT</version>
+  <groupId>cn.shopex</groupId>
+  <artifactId>prism-sdk</artifactId>
+  <version>1.0</version>
 </dependency>
 ```
 
@@ -81,6 +81,7 @@ System.out.println(apiResult);
 ```
 
 - websocket连接
+
 ### 设置WebSocket生命周期函数
 
 ```java
@@ -141,7 +142,7 @@ prismClient.consume();
 prismClient.ack(1);
 ```
 
-** 详细使用请代码点击[这里](https://git.ishopex.cn/matrix/prism-java/tree/master/src/test/java/cn/shopex/prism/sdk/PrismClientTest.java) **
+**详细使用请代码点击[这里](https://git.ishopex.cn/matrix/prism-java/tree/master/src/test/java/cn/shopex/prism/sdk/PrismClientTest.java)**
 
 - oauth认证
 
@@ -170,10 +171,6 @@ public class LoginController {
 }
 ```
 
-如果授权过期，可以调用
-```java
-refreshToken()
-```
-方法来刷新授权令牌
+如果授权过期，可以调用```refreshToken()```方法来刷新授权令牌
 
-** 详细代码可以在源码测试下查看，先进入[Main](https://git.ishopex.cn/matrix/prism-java/tree/master/src/test/java/cn/shopex/prism/sdk/springmvc/main/ConsoleMain.java)启动web容器，然后浏览器打开登录页面localhost:8002/user/login 即可测试Oauth认证 **
+**详细代码可以在源码测试下查看，先进入[Main](https://git.ishopex.cn/matrix/prism-java/tree/master/src/test/java/cn/shopex/prism/sdk/springmvc/main/ConsoleMain.java)启动web容器，然后浏览器打开登录页面localhost:8002/user/login 即可测试Oauth认证 **
