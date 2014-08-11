@@ -17,15 +17,15 @@ public class JettyServer {
 
   private static final Logger logger = LoggerFactory.getLogger(JettyServer.class);
 
-  // 根路径
+  // Root path
   private String BASE_DIR_PATH = System.getProperty("Dbase.dir");
 
-  // jetty服务器
+  // jetty Server
   private Server server;
 
   private WebAppContext context;
 
-  // jetty服务状态，默认为未启动
+  // jetty Server status，default is start
   private AtomicBoolean isStart = new AtomicBoolean(false);
 
   public JettyServer() {
@@ -33,7 +33,6 @@ public class JettyServer {
       server = new Server();
       server.setHandler(new DefaultHandler());
       XmlConfiguration cfg = null;
-      // jetty配置文件路径
       String jettyXMLPath = genFilePath(BASE_DIR_PATH, "src/test/resources/webapp/jetty.xml");
       System.out.println(jettyXMLPath);
       cfg = new XmlConfiguration(new FileInputStream(jettyXMLPath));
@@ -61,7 +60,7 @@ public class JettyServer {
   }
 
   /**
-   * 启动Jetty服务器
+   * startup Jetty Server
    */
   public void start() {
     try {

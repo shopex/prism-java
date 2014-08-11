@@ -1,10 +1,5 @@
 package cn.shopex.prism.sdk;
 
-/**
- * Created with IntelliJ IDEA.
- * User: yangyong
- * Date: 14-6-16 下午6:10
- */
 public class PrismMsg {
   private String client_id;
   private String app_name;

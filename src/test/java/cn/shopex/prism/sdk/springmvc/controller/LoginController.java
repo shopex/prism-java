@@ -8,11 +8,6 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Created with IntelliJ IDEA.
- * User: yangyong
- * Date: 14-6-17 下午7:02
- */
 @Controller
 @RequestMapping("/user")
 public class LoginController {
@@ -22,7 +17,7 @@ public class LoginController {
 
   PrismClient prismClient = new PrismClient(url,key,secret);
 
-  //测试oauth授权
+  //testing oauth
   @RequestMapping("/login")
   public ModelAndView login(HttpServletRequest request,HttpServletResponse response) {
     ModelAndView view = new ModelAndView("/index");

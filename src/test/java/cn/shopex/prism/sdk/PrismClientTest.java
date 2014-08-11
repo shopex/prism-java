@@ -10,17 +10,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
-/**
- * Created with IntelliJ IDEA.
- * User: yangyong
- * Date: 14-6-11 下午1:26
- */
 public class PrismClientTest {
   String url = "http://dilbmtcv.apihub.cn/api";
   String key = "buwb2lii";
   String secret = "ucr72ygfutspqeuu6s36";
 
-  //测试api get请求
+  //testing api get
   @Test
   public void apiGet(){
     String method = "/platform/notify/status";
@@ -34,13 +29,13 @@ public class PrismClientTest {
     }
   }
 
-  //测试api post请求
+  //testing api post
   @Test
   public void apiPost(){
     String method = "/platform/notify/write";
     PrismClient prismClient = new PrismClient(url,key,secret);
     Map<String,String> appParams = new HashMap<String, String>();
-    appParams.put("data","你好");
+    appParams.put("data","hello");
     try {
       String apiResult = prismClient.doPost(method, appParams);
       System.out.println(apiResult);
@@ -49,7 +44,7 @@ public class PrismClientTest {
     }
   } 
 
-  //测试websocket连接
+  //testing websocket connection
   @Test
   public void websocketConnect(){
     String method = "/platform/notify";
@@ -62,10 +57,10 @@ public class PrismClientTest {
       @Override
       public void onMessage(WebSocket socket, PrismMsg prismMsg) {
         System.out.println("---> receive msg:"+prismMsg);
-        if (prismMsg.getTag() == 1) {//这里只对第一条消息做ACK应答
+        if (prismMsg.getTag() == 1) {
           try {
             socket.send(prismClient.assembleAckData(prismMsg.getTag()));
-            System.out.println("发送ACK完成："+prismMsg.getTag());
+            System.out.println("sending ack："+prismMsg.getTag());
           } catch (WebSocketException e) {
             e.printStackTrace();
           }

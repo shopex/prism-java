@@ -10,11 +10,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
-/**
- * Created with IntelliJ IDEA.
- * User: yangyong
- * Date: 14-6-16 下午7:10
- */
 public final class SignTools {
   public static final String CHARSET = "utf-8";
 
