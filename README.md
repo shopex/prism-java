@@ -53,7 +53,10 @@ mvn clean install
 String url = "http://dilbmtcv.apihub.cn/api";
 String key = "buwb2lii";
 String secret = "ucr72ygfutspqeuu6s36";
-Boolean https_model = true;
+Boolean https_model = true;#可选
+
+PrismClient prismClient = new PrismClient(url,key,secret);
+或者
 PrismClient prismClient = new PrismClient(url,key,secret,https_model);
 ```
 

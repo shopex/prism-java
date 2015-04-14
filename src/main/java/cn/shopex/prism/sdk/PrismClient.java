@@ -64,6 +64,20 @@ public class PrismClient {
         initSysParams();
     }
 
+    public PrismClient(String url, String appkey, String secret) {
+        this.urlStr = url;
+        this.appkey = appkey;
+        this.secret = secret;
+        this.connectTimeout = 5000;//默认5秒
+        this.readTimeout = 5000;//默认5秒
+        urlParser = new URLParser(urlStr);
+        this.authorizeUrl = urlParser.getSite("/oauth/authorize");
+        this.tokenUrl = urlParser.getSite("/oauth/token");
+        this.checkSessionUrl = urlParser.getSiteWithAppendPath("/platform/oauth/session_check");
+        this.https_model = false;
+        initSysParams();
+    }
+
     /**
      * 初始化组装系统级参数
      */
@@ -73,6 +87,7 @@ public class PrismClient {
             sysParams.put(Constants.CLIENT_ID, appkey);//appkey
             sysParams.put(Constants.CLIENT_SECRET, secret);//secret
         } else {
+            sysParams.put(Constants.CLIENT_ID, appkey);//appkey
             sysParams.put(Constants.SIGN_METHOD, "md5");//加密方式，默认md5加密
             sysParams.put(Constants.SIGN_TIME, String.valueOf(new Date().getTime() / 1000));//时间戳
         }
