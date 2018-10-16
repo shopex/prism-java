@@ -54,8 +54,8 @@ public class PrismClient {
         this.urlStr = url;
         this.appkey = appkey;
         this.secret = secret;
-        this.connectTimeout = 5000;//默认5秒
-        this.readTimeout = 5000;//默认5秒
+        this.connectTimeout = 15000;//默认15秒
+        this.readTimeout = 15000;//默认15秒
         urlParser = new URLParser(urlStr);
         this.authorizeUrl = urlParser.getSite("/oauth/authorize");
         this.tokenUrl = urlParser.getSite("/oauth/token");
