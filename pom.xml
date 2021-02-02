@@ -9,7 +9,7 @@
     <version>1.0</version>
 
     <properties>
-        <jetty.version>7.6.0.RC5</jetty.version>
+        <jetty.version>11.0.0</jetty.version>
         <org.springframework.version>3.1.2.RELEASE</org.springframework.version>
     </properties>
 
